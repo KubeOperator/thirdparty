@@ -25,11 +25,12 @@ class Component:
         p=os.path.join(cwd,self.name)
         print "go to dir {}".format(p)
         os.chdir(p)
+        os.system("dokcer build -t {} .".format(self.image))
         os.execvpe("docker",["","build","-t",self.image,"."],os.environ)
         print "return root dir"
         os.chdir(cwd)
     def push(self):
-        os.execvpe("docker",["","push",self.image],os.environ)
+        os.system("dokcer push {} .".format(self.image))
 
 
 

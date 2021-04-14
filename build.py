@@ -42,7 +42,7 @@ if __name__ == '__main__':
         print "build {} ...".format(c.name)
         c.build()
 
-    if sys.argv[1]>2 and sys.argv[1]=="push":
+    if len(sys.argv)>2 and sys.argv[1]=="push":
         for c in components:
             print "push {} ...".format(c.image)
 

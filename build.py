@@ -15,7 +15,7 @@ class Component:
             arch="amd64"
         if arch in ["ARM64"]:
             arch="arm64"
-        self.image="{}-{}".format(self.image,arch)
+        self.image="{}-{}".format(image,arch)
 
     def build(self):
         cwd=os.getcwd()

@@ -10,6 +10,7 @@ images={
 class Component:
     def __init__(self,name,image):
         self.name=name
+        arch=platform.machine()
         if arch in ["x86_64","AMD64"]:
             arch="amd64"
         if arch in ["ARM64"]:
@@ -21,7 +22,6 @@ class Component:
         p=os.path.join(cwd,self.name)
         print "go to dir {}".format(p)
         os.chdir(p)
-        arch=platform.machine()
         os.execvpe("docker",["","build","-t",self.image,"."],os.environ)
         print "return root dir"
         os.chdir(cwd)

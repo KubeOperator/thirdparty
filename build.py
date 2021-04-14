@@ -10,9 +10,9 @@ images={
 class Component:
     def __init__(self,name,image):
         self.name=name
-        if arch in ["x86_64","AMD64"]
+        if arch in ["x86_64","AMD64"]:
             arch="amd64"
-        if arch in ["ARM64"]
+        if arch in ["ARM64"]:
             arch="arm64"
         self.image="{}-{}".format(self.image,arch)
 

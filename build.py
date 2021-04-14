@@ -2,6 +2,7 @@
 
 import os
 import platform
+import sys
 
 images={
     "nginx":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nginx:1.19.2",
@@ -26,19 +27,25 @@ class Component:
         os.chdir(p)
         os.execvpe("docker",["","build","-t",self.image,"."],os.environ)
         print "return root dir"
-        os.execvpe("docker",["","push",self.image],os.environ)
         os.chdir(cwd)
+    def push(self):
+        os.execvpe("docker",["","push",self.image],os.environ)
 
 
 
 if __name__ == '__main__':
+    
     components=[]
     for key in images.keys():
         components.append(Component(key,images[key]))
     for c in  components:
         print "build {} ...".format(c.name)
         c.build()
-    
+
+    if sys.argv[1]>2 and sys.argv[1]=="push":
+        for c in components:
+            print "push {} ...".format(c.image)
+
 
 
 

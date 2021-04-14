@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import os
 import platform
 
@@ -24,6 +26,7 @@ class Component:
         os.chdir(p)
         os.execvpe("docker",["","build","-t",self.image,"."],os.environ)
         print "return root dir"
+        os.execvpe("docker",["","push",self.image],os.environ)
         os.chdir(cwd)
 
 

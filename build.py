@@ -6,7 +6,7 @@ import sys
 
 images={
     "nginx":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nginx:1.19.2",
-    "mysql-server":"registry.cn-qingdao.aliyuncs.com/kubeoperator/mysql-server:8.0.21",
+    "mysql-server":"registry.cn-qingdao.aliyuncs.com/kubeoperator/mysql-server:8.0.23",
     "nexus":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nexus:3.25.0",
 }
 

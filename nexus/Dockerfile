@@ -62,6 +62,7 @@ RUN yum update -y --disableplugin=subscription-manager && yum install -y --disab
        --recipe-url ${NEXUS_REPOSITORY_MANAGER_COOKBOOK_URL} \
        --json-attributes /var/chef/solo.json \
     && rpm -qa *chef* | xargs rpm -e \
+    && yum remove curl \
     && rm -rf /etc/chef \
     && rm -rf /opt/chefdk \
     && rm -rf /var/cache/yum \

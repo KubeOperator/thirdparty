@@ -5,9 +5,9 @@ import platform
 import sys
 
 images={
-    "nginx":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nginx:1.19.2-t",
-    "mysql-server":"registry.cn-qingdao.aliyuncs.com/kubeoperator/mysql-server:8.0.23-t",
-    "nexus":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nexus:3.30.0-t",
+    "nginx":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nginx:1.19.9-alpine",
+    "mysql-server":"registry.cn-qingdao.aliyuncs.com/kubeoperator/mysql-server:8.0.23",
+    "nexus":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nexus3:3.30.0",
 }
 
 class Component:
@@ -31,10 +31,7 @@ class Component:
     def push(self):
         os.system("docker push {}".format(self.image))
 
-
-
 if __name__ == '__main__':
-    
     components=[]
     for key in images.keys():
         components.append(Component(key,images[key]))
@@ -46,7 +43,3 @@ if __name__ == '__main__':
         for c in components:
             print "push {} ...".format(c.image)
             c.push()
-
-
-
-

@@ -16,7 +16,7 @@ class Component:
         arch=platform.machine()
         if arch in ["x86_64","AMD64"]:
             arch="amd64"
-        if arch in ["ARM64","AARCH64"]:
+        if arch in ["ARM64","aarch64"]:
             arch="arm64"
         self.image="{}-{}".format(image,arch)
 

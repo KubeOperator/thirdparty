@@ -7,7 +7,7 @@ import sys
 images={
     "nginx":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nginx:1.19.2-t",
     "mysql-server":"registry.cn-qingdao.aliyuncs.com/kubeoperator/mysql-server:8.0.23-t",
-    "nexus":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nexus:3.25.0-t",
+    "nexus":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nexus:3.30.0-t",
 }
 
 class Component:
@@ -29,7 +29,7 @@ class Component:
         print "return root dir"
         os.chdir(cwd)
     def push(self):
-        os.system("docker push {} .".format(self.image))
+        os.system("docker push {}".format(self.image))
 
 
 
@@ -45,6 +45,7 @@ if __name__ == '__main__':
     if len(sys.argv)>2 and sys.argv[1]=="push":
         for c in components:
             print "push {} ...".format(c.image)
+            c.push()
 
 
 

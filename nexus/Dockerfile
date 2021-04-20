@@ -15,9 +15,7 @@ ENV NEXUS_HOME=${SONATYPE_DIR}/nexus \
 
 WORKDIR ${SONATYPE_DIR}
 
-COPY ./start.sh .
-
-COPY ./nexus-3.30.0-01-unix.tar.gz .
+RUN wget https://kubeoperator.oss-cn-beijing.aliyuncs.com/nexus/image/nexus-3.30.0-01-unix.tar.gz
 
 RUN tar -zvxf ./nexus-3.30.0-01-unix.tar.gz && mv nexus-3.30.0-01 nexus
 

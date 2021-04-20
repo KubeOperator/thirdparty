@@ -5,9 +5,9 @@ import platform
 import sys
 
 images={
-    "nginx":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nginx:1.19.9-alpine",
-    "mysql-server":"registry.cn-qingdao.aliyuncs.com/kubeoperator/mysql-server:8.0.23",
-    "nexus":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nexus3:3.30.0",
+    "nginx":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nginx:1.19.9-alpine-t",
+    "mysql-server":"registry.cn-qingdao.aliyuncs.com/kubeoperator/maria-db:10.5.8-t",
+    "nexus":"registry.cn-qingdao.aliyuncs.com/kubeoperator/nexus3:3.30.0-t",
 }
 
 class Component:

@@ -1,4 +1,4 @@
-  #!/bin/bash
+#!/bin/bash
 set -eo pipefail
 shopt -s nullglob
 
@@ -277,6 +277,7 @@ docker_setup_db() {
 		read -r -d '' passwordSet <<-EOSQL || true
 			DELETE FROM mysql.user WHERE user NOT IN ('mysql.sys', 'mysqlxsys', 'root') OR host NOT IN ('localhost') ;
 			SET PASSWORD FOR 'root'@'localhost'=PASSWORD('${MYSQL_ROOT_PASSWORD}') ;
+
 			-- 5.5: https://github.com/mysql/mysql-server/blob/e48d775c6f066add457fa8cfb2ebc4d5ff0c7613/scripts/mysql_secure_installation.sh#L192-L210
 			-- 5.6: https://github.com/mysql/mysql-server/blob/06bc670db0c0e45b3ea11409382a5c315961f682/scripts/mysql_secure_installation.sh#L218-L236
 			-- 5.7: https://github.com/mysql/mysql-server/blob/913071c0b16cc03e703308250d795bc381627e37/client/mysql_secure_installation.cc#L792-L818
@@ -296,6 +297,7 @@ docker_setup_db() {
 		-- What's done in this file shouldn't be replicated
 		--  or products like mysql-fabric won't work
 		SET @@SESSION.SQL_LOG_BIN=0;
+
 		${passwordSet}
 		GRANT ALL ON *.* TO 'root'@'localhost' WITH GRANT OPTION ;
 		FLUSH PRIVILEGES ;

@@ -10,20 +10,18 @@ LABEL maintainer="KubeOperator <kubeoperator@fit2cloud.com>" \
     org.opencontainers.image.vendor="KubeOperator" \
     org.opencontainers.image.version="v10.5.11"
 
+RUN apk update && apk upgrade
+
 RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils pwgen && \
     rm -f /var/cache/apk/*
-
-RUN rm -rf /usr/lib/libcurl* /usr/lib/libncursesw*
-
-RUN wget https://kubeoperator.oss-cn-beijing.aliyuncs.com/busybox/1.33.1/amd64/busybox.tar.gz \
-    && tar zxvf busybox.tar.gz -C /bin \
-    && rm -rf busybox.tar.gz
 
 ADD files/run.sh /scripts/run.sh
 RUN mkdir /docker-entrypoint-initdb.d && \
     mkdir /scripts/pre-exec.d && \
     mkdir /scripts/pre-init.d && \
     chmod -R 755 /scripts
+
+RUN rm -rf /usr/lib/libcurl* /usr/lib/libncursesw*
 
 EXPOSE 3306
 

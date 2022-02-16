@@ -1,22 +1,14 @@
-FROM yobasystems/alpine:3.13.5-amd64
+FROM yobasystems/alpine:3.14.0-amd64
 
-ARG BUILD_DATE
-ARG VCS_REF
-
-LABEL maintainer="Dominic Taylor <dominic@yobasystems.co.uk>" \
+LABEL maintainer="KubeOperator <kubeoperator@fit2cloud.com>" \
     architecture="amd64/x86_64" \
-    mariadb-version="10.5.9" \
-    alpine-version="3.13.5" \
-    build="08-Jun-2021" \
+    mariadb-version="10.5.11" \
+    alpine-version="3.14.0" \
     org.opencontainers.image.title="alpine-mariadb" \
     org.opencontainers.image.description="MariaDB Docker image running on Alpine Linux" \
-    org.opencontainers.image.authors="Dominic Taylor <dominic@yobasystems.co.uk>" \
-    org.opencontainers.image.vendor="Yoba Systems" \
-    org.opencontainers.image.version="v10.5.9" \
-    org.opencontainers.image.url="https://hub.docker.com/r/yobasystems/alpine-mariadb/" \
-    org.opencontainers.image.source="https://github.com/yobasystems/alpine-mariadb" \
-    org.opencontainers.image.revision=$VCS_REF \
-    org.opencontainers.image.created=$BUILD_DATE
+    org.opencontainers.image.authors="KubeOperator <kubeoperator@fit2cloud.com>" \
+    org.opencontainers.image.vendor="KubeOperator" \
+    org.opencontainers.image.version="v10.5.11"
 
 RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils pwgen && \
     rm -f /var/cache/apk/*

@@ -1,15 +1,5 @@
 FROM yobasystems/alpine:3.14.0-amd64
 
-LABEL maintainer="KubeOperator <kubeoperator@fit2cloud.com>" \
-    architecture="amd64/x86_64" \
-    mariadb-version="10.5.11" \
-    alpine-version="3.14.0" \
-    org.opencontainers.image.title="alpine-mariadb" \
-    org.opencontainers.image.description="MariaDB Docker image running on Alpine Linux" \
-    org.opencontainers.image.authors="KubeOperator <kubeoperator@fit2cloud.com>" \
-    org.opencontainers.image.vendor="KubeOperator" \
-    org.opencontainers.image.version="v10.5.11"
-
 RUN apk update && apk upgrade
 
 RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils pwgen && \
